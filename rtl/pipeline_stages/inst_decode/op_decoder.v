@@ -3,7 +3,8 @@ module op_decoder(
     output jump,
     output [1:0] alu_control,
     output alu_src_sel,
-    output dest_reg
+    output dest_reg,
+    output load_sel
 )
 
     assign jump = (op_code == 4'b1000) ? 1 : 0;

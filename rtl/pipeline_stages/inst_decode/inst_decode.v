@@ -36,6 +36,7 @@ register_file rf(
 op_decoder op_decoder(
     .op_code(inst[7:4]),
     .dest_reg(dest_reg_out),
+    .load_sel()
 );
     
 

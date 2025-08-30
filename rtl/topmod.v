@@ -29,7 +29,7 @@ module topmod(
         immediate_id;
 
     //execute stage signals
-    reg src_sel_ex;
+    reg alu_src_sel_ex;
     reg [1:0] alu_ctl_ex; 
 
     reg [1:0] dst_reg_ex; //piped through for a register write
@@ -94,15 +94,17 @@ module topmod(
     );
 
     execute execute(
-        .immediat(),
+        .immediate(),
         .val_1(),
         .val_2(),
         .alu_ctl(),
-        .alu_src_ctl(),
+        .alu_src_ctl()
     );
      
     mem_access mem_access(
-
+        .clk(),
+        .val(),
+        .
     );
 
     write_back write_back(
@@ -118,12 +120,15 @@ module topmod(
 
         // id - ex 
         dst_reg_id <= dst_reg_ex;
+        load_sel_id <= load_sel_ex;
 
         // ex - ma 
         dst_reg_ex <= dst_reg_ma;
+        load_sel_ex <= load_sel_ma;
 
         // ma - wb 
         dst_reg_ma <= dst_reg_wb;
+        load_sel_ma <= load_sel_wb;
     end
 
 endmodule
